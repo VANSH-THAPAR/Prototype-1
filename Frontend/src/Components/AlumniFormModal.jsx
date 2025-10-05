@@ -23,7 +23,7 @@ const ImageUploader = ({ profilePicture, onUpload }) => {
             const base64Image = reader.result;
             setLoading(true);
             try {
-                const response = await fetch('http://localhost:5000/upload-image', { // Ensure port is correct
+                const response = await fetch(`${import.meta.env.VITE_backend_url}/upload-image`, { // Ensure port is correct
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ image: base64Image })
