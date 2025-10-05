@@ -183,14 +183,13 @@ const ManageAlumni = () => {
     const [viewingAlumnus, setViewingAlumnus] = useState(null);
     const [filters, setFilters] = useState({ name: '', StudentId: '', batchYear: '', degreeProgram: '', gender: '', profession: '', nationality: '' });
     const [filterOptions, setFilterOptions] = useState({ batchYears: [], degreePrograms: [], genders: [], professions: [] });
-    const API_URL = 'http://localhost:5000';
     const fileInputRef = useRef(null);
 
     // --- Data Fetching ---
     useEffect(() => {
         const fetchFilterMetadata = async () => {
             try {
-                const response = await fetch(`${API_URL}/metadata`);
+                const response = await fetch(`${import.meta.env.VITE_backend_url}/metadata`);
                 if (!response.ok) throw new Error('Could not load filter options.');
                 const data = await response.json();
                 setFilterOptions(data);
@@ -207,7 +206,7 @@ const ManageAlumni = () => {
         setError(null);
         const queryParams = new URLSearchParams(Object.fromEntries(Object.entries(filters).filter(([_, v]) => v))).toString();
         try {
-            const response = await fetch(`${API_URL}/get-alumni?${queryParams}`);
+            const response = await fetch(`${import.meta.env.VITE_backend_url}/get-alumni?${queryParams}`);
             if (!response.ok) throw new Error('Network response was not ok.');
             const data = await response.json();
             setAlumni(data);
@@ -234,7 +233,7 @@ const ManageAlumni = () => {
 
     const handleFormSubmit = async (formData) => {
         const isEditing = Boolean(editingAlumnus);
-        const url = isEditing ? `${API_URL}/update-alumni/${editingAlumnus.StudentId}` : `${API_URL}/add-alumni`;
+        const url = isEditing ? `${import.meta.env.VITE_backend_url}/update-alumni/${editingAlumnus.StudentId}` : `${import.meta.env.VITE_backend_url}/add-alumni`;
         const method = isEditing ? 'PUT' : 'POST';
         try {
             const response = await fetch(url, {
@@ -257,7 +256,7 @@ const ManageAlumni = () => {
         e.stopPropagation();
         if (window.confirm('Are you sure you want to permanently delete this record?')) {
             try {
-                const response = await fetch(`${API_URL}/delete-alumni/${studentId}`, { method: 'DELETE' });
+                const response = await fetch(`${import.meta.env.VITE_backend_url}/delete-alumni/${studentId}`, { method: 'DELETE' });
                 const result = await response.json();
                 if (!response.ok) throw new Error(result.message || 'Failed to delete record.');
                 alert('Alumni record deleted.');
@@ -275,7 +274,7 @@ const ManageAlumni = () => {
         const formData = new FormData();
         formData.append('alumniFile', file);
         try {
-            const response = await fetch(`${API_URL}/upload`, { method: 'POST', body: formData });
+            const response = await fetch(`${import.meta.env.VITE_backend_url}/upload`, { method: 'POST', body: formData });
             const result = await response.json();
             if (!response.ok) throw new Error(result.message || 'File upload failed');
             alert(result.message);

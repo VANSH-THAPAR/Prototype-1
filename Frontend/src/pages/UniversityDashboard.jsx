@@ -66,7 +66,7 @@ const UniversityDashboard = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch('http://localhost:5000/fetch-total');
+                const response = await fetch(`${import.meta.env.VITE_backend_url}/fetch-total`);
                 if (!response.ok) throw new Error('Data fetch failed');
                 const data = await response.json();
                 setStats(data);
