@@ -84,7 +84,7 @@ const AlumniFormModal = ({ isOpen, onClose, onSubmit, initialData }) => {
         name: '', StudentId: '', universityEmail: '', personalEmail: '',
         contactNumber: '', fatherName: '', motherName: '', nationality: '',
         gender: '', role: 'Alumni', ProfilePicture: '', dob: '',
-        profession: '', CompanyName: '', batchYear: '', degreeProgram: '', LinkedinURL: ''
+        profession: '', CompanyName: '', batchYear: '', degreeProgram: '', LinkedInURL: ''
     };
 
     const [formData, setFormData] = useState(initialFormState);
@@ -155,7 +155,7 @@ const AlumniFormModal = ({ isOpen, onClose, onSubmit, initialData }) => {
                             <FormInput label="Profession" name="profession" value={formData.profession} onChange={handleChange} />
                             <FormInput label="Company Name" name="CompanyName" value={formData.CompanyName} onChange={handleChange} />
                             <div className="md:col-span-2">
-                                <FormInput label="LinkedIn Profile URL" name="LinkedinURL" value={formData.LinkedinURL} onChange={handleChange} />
+                                <FormInput label="LinkedIn Profile URL" name="LinkedInURL" value={formData.LinkedInURL} onChange={handleChange} />
                             </div>
                         </div>
                     </div>
