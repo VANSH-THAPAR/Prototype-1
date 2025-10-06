@@ -286,6 +286,8 @@ const ManageAlumni = () => {
             setLoading(false);
         }
     };
+
+    
     const triggerFileInput = () => { fileInputRef.current.click(); };
 
     // --- Chart Data Processing ---

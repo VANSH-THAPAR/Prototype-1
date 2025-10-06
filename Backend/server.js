@@ -12,7 +12,6 @@ require('dotenv').config(); // Load environment variables
 
 app.use(cors());
 
-// Handle preflight requests
 
 
 app.use(express.json({ limit: '10mb' }));

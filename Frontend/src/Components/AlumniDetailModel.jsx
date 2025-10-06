@@ -41,7 +41,7 @@ const AlumniDetailModal = ({ isOpen, onClose, alumnus }) => {
                             <div className="w-full mt-6 space-y-4 text-left">
                                 <InfoItem label="University Email" value={alumnus.universityEmail} />
                                 <InfoItem label="Contact Number" value={alumnus.contactNumber} />
-                                <InfoItem label="LinkedIn Profile" value={alumnus.LinkedinURL} isLink={true} />
+                                <InfoItem label="LinkedIn Profile" value={alumnus.LinkedInURL} isLink={true} />
                             </div>
                         </div>
 
